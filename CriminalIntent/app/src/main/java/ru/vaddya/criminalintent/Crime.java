@@ -13,6 +13,9 @@ public class Crime {
     private String title;
     private Date date;
     private boolean isSolved;
+    private String suspect;
+
+    private static final String DATE_FORMAT = "cccc, MMM d, yyyy";
 
     public Crime() {
         this(UUID.randomUUID());
@@ -39,6 +42,10 @@ public class Crime {
         return date;
     }
 
+    public String getFormattedDate() {
+        return new DateFormat().format(DATE_FORMAT, date).toString();
+    }
+
     public void setDate(Date date) {
         this.date = date;
     }
@@ -49,5 +56,13 @@ public class Crime {
 
     public void setSolved(boolean solved) {
         isSolved = solved;
+    }
+
+    public String getSuspect() {
+        return suspect;
+    }
+
+    public void setSuspect(String suspect) {
+        this.suspect = suspect;
     }
 }
