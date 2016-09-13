@@ -22,7 +22,10 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 
+import java.io.File;
 import java.util.Date;
 import java.util.UUID;
 
@@ -38,7 +41,10 @@ public class CrimeFragment extends Fragment {
     public static final int REQUEST_CONTACT = 1;
 
     private Crime crime;
+    private File photoFile;
     private EditText titleEditText;
+    private ImageButton photoButton;
+    private ImageView photoView;
     private Button dateButton;
     private CheckBox solvedCheckBox;
     private Button suspectButton;
@@ -119,6 +125,9 @@ public class CrimeFragment extends Fragment {
             suspectButton.setEnabled(false);
         }
 
+        photoButton = (ImageButton) v.findViewById(R.id.crime_camera_button);
+        photoView = (ImageView) v.findViewById(R.id.crime_photo_imageview);
+
         return v;
     }
 
@@ -176,6 +185,7 @@ public class CrimeFragment extends Fragment {
 
         UUID crimeId = (UUID) getArguments().getSerializable(ARG_CRIME_ID);
         crime = CrimeLab.getInstance(getActivity()).getCrime(crimeId);
+        //photoFile = CrimeLab.getInstance(getActivity()).getPhotoFile(crime);
     }
 
     @Override
